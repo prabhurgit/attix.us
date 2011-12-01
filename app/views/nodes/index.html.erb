@@ -1,0 +1,33 @@
+
+<h1>All Nodes</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+      <th></th>
+  </tr>
+
+<% @nodes.each do |node| %>
+  <tr>
+    <td><%= node.title %></td>
+    <td><%= link_to 'Show', node %></td>
+    <td><%= link_to 'Destroy', node, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+
+
+<h2>
+  <p>Create a node here !</p>
+</h2>
+<%= form_for @node do |f| %>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'create'%>
+  </div>
+<% end %>

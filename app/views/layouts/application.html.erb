@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MongoidDeviseSkeleton</title>
+  <title>Attix.us</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+
 </head>
 <body>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-
-<%= yield %>
-
+  <%= render :partial => 'layouts/topbar' %>
+  <div class="container">
+    <div id="main" class="container-fluid">
+      <p class="alert"><%= alert %></p>
+      <%= yield %>
+    </div>
+  </div>
+  <%= render :partial => 'layouts/footer' %>
 </body>
 </html>
+

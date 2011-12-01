@@ -1,1 +1,2 @@
-skeleton application , using  mongoid  devise and  bootstrap
+
+#Attix.us

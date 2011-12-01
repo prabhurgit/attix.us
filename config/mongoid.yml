@@ -1,10 +1,10 @@
 development:
   host: localhost
-  database: mongoid_devise_skeleton_development
+  database: attix
 
 test:
   host: localhost
-  database: mongoid_devise_skeleton_test
+  database: attix
 
 # set these environment variables on your prod server
 production:

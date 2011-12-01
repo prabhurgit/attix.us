@@ -1,0 +1,24 @@
+ <div class="topbar" data-dropdown="dropdown">
+    <div class="topbar-inner">
+      <div class="container">
+        <h3>
+          <a href="/">Attix.us</a>
+        </h3>
+        <ul class="nav">
+          <li class=active><a href="<%= nodes_path %>">节点</a></li>
+        </ul>
+        <% if current_user %>
+        <ul class="nav secondary-nav" id="userbar">
+              <li><a href="<%= edit_user_registration_path %>">个人资料设置</a></li>
+              <li><%= link_to "退出", destroy_user_session_path, method: :delete %></li>
+        </ul>
+        <% else %>
+          <ul class="nav secondary-nav" id="userbar">
+            <li<%=' class=active' if params[:controller] == "devise/registrations" and params[:action] == "new" %>><a href="<%= new_user_registration_path %>">注册</a></li>
+            <li<%=' class=active' if params[:controller] == "devise/sessions" and params[:action] == "new" %>><a href="<%= new_user_session_path %>">登录</a></li>
+          </ul>
+        <% end %>
+      </div>
+    </div>
+  </div>
+

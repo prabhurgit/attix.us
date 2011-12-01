@@ -5,7 +5,7 @@ gem 'rails', '3.1.3'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+#gem 'sqlite3'
 
 # MongoDB
 gem 'mongoid'
@@ -13,6 +13,15 @@ gem 'bson_ext'
 
 
 gem 'devise'
+
+
+gem 'will_paginate', '~> 3.0'
+
+
+# Markdown With Syntax
+gem 'redcarpet', '1.17.2'
+gem 'albino', '1.3.3'
+gem 'nokogiri'
 
 
 # Gems used only for assets and not required

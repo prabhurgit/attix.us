@@ -1,11 +1,13 @@
 MongoidDeviseSkeleton::Application.routes.draw do
-  root :to => "home#index"
+  root :to => "posts#index"
 
   devise_for :users
 
-
-
-
+  resources :nodes
+  resources :posts do
+    resources :comments
+    post :create_comment
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
