@@ -8,6 +8,9 @@ class Node
   # References
   references_many :posts
 
+  # Scope
+  default_scope :order => 'create at desc'
+
   # Validation
   validates_presence_of :title
   validates_uniqueness_of :title

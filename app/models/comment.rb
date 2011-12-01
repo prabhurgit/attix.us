@@ -22,7 +22,7 @@ class Comment
     self.post.last_comment_at = Time.now
     self.post.last_comment_id = self.id
     self.post.last_comment_user_id = self.user_id
-    self.post.push_follower(self.user_id)
+    #self.post.push_follower(self.user_id)
     self.post.save
   end
 
