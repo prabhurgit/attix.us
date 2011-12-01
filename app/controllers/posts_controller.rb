@@ -56,7 +56,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to node_path(@post.node_id), notice: 'Post was successfully created.' }
         format.json { render json: @post, status: :created, location: @post }
       else
         format.html { render action: "new" }
@@ -90,6 +90,17 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to posts_url }
       format.json { head :ok }
+    end
+  end
+
+  def create_comment
+    @post = Post.find(params[:id])
+    @comment = @post.comments.build(params[:comment])
+    @comment.user_id = current_user.id
+    if @comment.save
+      @msg = "Comment created!"
+    else
+      @msg = @comment.errors.full_messages.join("<br />")
     end
   end
 
