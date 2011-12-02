@@ -4,11 +4,13 @@ class Post
   include Mongoid::CounterCache
   include MarkdownWithSyntax
 
+  key :title
+
   # Field:
   field :title
   field :content
   field :raw_content
-  field :comments_conut, :type => Integer, :default => 0
+  field :comments_count, :type => Integer, :default => 0
   field :last_comment_at, :type => DateTime
   field :last_comment_id, :type => Integer
   field :follower_ids, :type => Array, :default => []
@@ -28,6 +30,10 @@ class Post
 
   # Scopes
   scope :last_actived, desc('last_comment_at').desc('created_at')
+
+  def node_title
+    self.node.title
+  end
 
   before_save :update_content
   def update_content

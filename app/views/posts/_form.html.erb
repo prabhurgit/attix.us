@@ -11,7 +11,11 @@
     </div>
   <% end %>
 
+
+  <div class="field">
+    <br />
     <%= f.select :node_id, Node.all.collect { |n| [n.title, n.id] },{}, :style => "width:140px" %>
+  </div>
 
 
   <div class="field">

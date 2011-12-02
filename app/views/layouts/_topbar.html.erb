@@ -5,7 +5,7 @@
           <a href="/">Attix.us</a>
         </h3>
         <ul class="nav">
-          <li class=active><a href="<%= nodes_path %>">节点</a></li>
+          <li><%= link_to "节点", nodes_path %></li>
         </ul>
         <% if current_user %>
         <ul class="nav secondary-nav" id="userbar">

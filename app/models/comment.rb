@@ -5,9 +5,10 @@ class Comment
 
   # Field
   field :content
+  field :raw_content
 
   # Validation
-  validates :content, :presence => true, :length => { :minimum => 1}
+  validates :raw_content, :presence => true, :length => { :minimum => 1}
 
   # Reference
   belongs_to :post, :inverse_of => :comments
@@ -25,5 +26,11 @@ class Comment
     #self.post.push_follower(self.user_id)
     self.post.save
   end
+
+  before_save :update_content
+  def update_content
+    self.content = markdown_with_syntax(self.raw_content)
+  end
+
 
 end

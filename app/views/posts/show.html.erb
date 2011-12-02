@@ -13,14 +13,14 @@
 <% if @post.comments.size > 0 %>
   <h2>Comments</h2>
   <% @post.comments.each do |comment| %>
-    <%= comment.content %> | by <%= comment.user.email %> <br />
+    <%= raw comment.content %> | by <%= comment.user.email %> <br />
   <% end %>
 <% end %>
 
 <h2>Add a comment:</h2>
 <%= form_for [@post, Comment.new] do |f| %>
   <p>
-    <%= f.text_area :content, :rows => 3 %>
+    <%= f.text_area :raw_content, :rows => 3 %>
     <%= f.submit %>
   </p>
 <% end %>

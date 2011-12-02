@@ -1,6 +1,8 @@
 class Node
   include Mongoid::Document
 
+  key :title
+
   # Fields:
   field :title
   field :posts_count, :type => Integer, :default => 0

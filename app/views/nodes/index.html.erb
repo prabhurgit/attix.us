@@ -10,7 +10,7 @@
 
 <% @nodes.each do |node| %>
   <tr>
-    <td><%= node.title %></td>
+    <td><%= node.title  %>(<%= node.posts_count %>条帖子)</td>
     <td><%= link_to 'Show', node %></td>
     <td><%= link_to 'Destroy', node, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
