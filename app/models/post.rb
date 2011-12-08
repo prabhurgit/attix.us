@@ -31,6 +31,12 @@ class Post
   # Scopes
   scope :last_actived, desc('last_comment_at').desc('created_at')
 
+  def last_comment_user_email
+    user = User.find(:last_comment_user_id)
+    user.email
+  end
+
+
   def node_title
     self.node.title
   end

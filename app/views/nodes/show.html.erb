@@ -1,24 +1,26 @@
 <h1><%= @node.title %>'s posts</h1>
+<%= link_to 'New Post', new_post_path(:node_id => @node.id) %>
+
+<%= custom_will_paginate @posts %>
+
 <table>
   <tr>
     <th>Title</th>
     <th>Author</th>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
 
 <% @posts.each do |post| %>
   <tr>
-    <td><%= post.title %> (<%= post.comments_count %>条回复)</td>
+    <td><%= link_to post.title + '(' +  post.comments_count.to_s + '条回复)' ,post %></td>
     <td><%= post.user.email %></td>
-    <td><%= link_to 'Show', post %></td>
     <td><%= link_to 'Edit', edit_post_path(post) %></td>
     <td><%= link_to 'Destroy', post, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
+<%= custom_will_paginate @posts %>
 
 <br />
 
-<%= link_to 'New Post', new_post_path(:node_id => @node.id) %>
