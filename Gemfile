@@ -11,8 +11,10 @@ gem 'rails', '3.1.3'
 gem 'mongoid'
 gem 'bson_ext'
 
-
+# User System
 gem 'devise'
+
+gem 'resque', '~> 1.19.0', :require => 'resque/server'
 
 
 gem 'will_paginate', '3.0.pre2'
@@ -51,3 +53,6 @@ gem 'rspec-rails', :group => [:development, :test]
 gem 'database_cleaner', :group => :test
 gem 'factory_girl_rails', :group => :test
 gem 'mongoid-rspec', :group => :test
+
+# YAML
+gem "settingslogic", "~>2.0.6"

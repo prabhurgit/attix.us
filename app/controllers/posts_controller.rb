@@ -51,6 +51,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(params[:post])
+    @post.content = @post.raw_content
     @post.user_id = current_user.id
     @post.node_id = params[:node_id] || params[:post][:node_id]
 
