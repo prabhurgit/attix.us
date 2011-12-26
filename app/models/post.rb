@@ -28,6 +28,14 @@ class Post
   counter_cache :name => :user, :inverse_of => :posts
   counter_cache :name => :node, :inverse_of => :posts
 
+
+  # indexes
+  index :node_id
+  index :last_comment_at
+  index :user_id
+
+
+
   # Scopes
   scope :last_actived, desc('last_comment_at').desc('created_at')
 

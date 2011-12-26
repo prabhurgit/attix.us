@@ -27,4 +27,6 @@ module ApplicationHelper
     will_paginate(pages, :class => 'pagination', :inner_window => 2, :outer_window => 0, :renderer => BootstrapLinkRenderer, :previous_label => '上一页'.html_safe, :next_label => '下一页'.html_safe)
   end
 
+
+
 end

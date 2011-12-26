@@ -1,0 +1,11 @@
+<% if @comments.size > 0 %>
+    <%= custom_will_paginate @comments %>
+
+  <h2>Comments</h2>
+  <div id=comments>
+    <%= render @comments %>
+  </div>
+  <%= custom_will_paginate @comments %>
+<% end %>
+
+

@@ -1,0 +1,15 @@
+
+
+<h1>活跃用户：</h1>
+<% @hot_users.each do |user| %>
+  <h3><%= link_to user.name, user_path(user) %></h3>
+  <%= user.email %>
+<% end %>
+
+<h1>最近加入：</h1>
+
+<% @new_registration_users.each do |user| %>
+<h3><%= link_to user.name, user_path(user) %></h3>
+<%= user.email %>
+<% end %>
+<%= custom_will_paginate @new_registration_users %>

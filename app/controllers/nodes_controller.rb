@@ -9,7 +9,7 @@ class NodesController < ApplicationController
   def show
     @node = Node.find(params[:id])
     #@posts = @node.posts.last_actived
-    @posts = @node.posts.paginate :page => params[:page], :per_page => 30
+    @posts = @node.posts.last_actived.includes(:node, :user, :last_comment_user).paginate :page => params[:page], :per_page => 30
   end
 
   def create

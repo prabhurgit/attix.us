@@ -4,7 +4,7 @@
   <title>Attix.us</title>
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+  <%= csrf_meta_tag %>
 
 </head>
 <body>
@@ -13,7 +13,7 @@
   <div class="container">
     <div id="main" class="container-fluid">
       <p class="alert"><%= alert %></p>
-      <%= yield %>
+        <%= yield %>
     </div>
   </div>
   <%= render :partial => 'layouts/footer' %>

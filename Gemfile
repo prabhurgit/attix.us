@@ -20,6 +20,9 @@ gem 'resque', '~> 1.19.0', :require => 'resque/server'
 gem 'will_paginate', '3.0.pre2'
 
 
+# bootstrap
+gem 'twitter-bootstrap-rails'
+
 # Markdown With Syntax
 gem 'redcarpet', '1.17.2'
 gem 'albino', '1.3.3'
@@ -53,6 +56,9 @@ gem 'rspec-rails', :group => [:development, :test]
 gem 'database_cleaner', :group => :test
 gem 'factory_girl_rails', :group => :test
 gem 'mongoid-rspec', :group => :test
+gem 'faker', :group => [:development, :test]
+#gem 'ffaker', :group => [:development, :test]
+
 
 # YAML
 gem "settingslogic", "~>2.0.6"
