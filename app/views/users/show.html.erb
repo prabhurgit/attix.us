@@ -1,3 +1,6 @@
-  <h3><%= @user.name %></h3>
+<%= user_avatar_tag(@user, :large) %>
+<h3><%= @user.name %></h3>
   <%= @user.email %>
+
+<%= render 'posts/posts' %>
 

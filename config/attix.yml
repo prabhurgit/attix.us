@@ -4,7 +4,7 @@ production:
   host:
   google_custom_search_id:
   admin_emails:
-    - admin@your_email.com
+    - parano@qq.com
     - admin2@your_email.com
   # gmail smtp
   smtp_username:

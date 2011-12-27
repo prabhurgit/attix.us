@@ -2,8 +2,8 @@
 module UsersHelper
   def user_name_tag(user,options = {})
     return "匿名" if user.blank?
-    #    result = link_to(user.name, user_path(user))
-    result = user.name
+    result = link_to(user.name, user_path(user))
+    #result = user.name
     return result
   end
 
@@ -16,7 +16,7 @@ module UsersHelper
     when :small
       width = 16
     when :large
-      width = 64
+      width = 128
     else
       width = size
     end

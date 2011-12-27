@@ -10,6 +10,7 @@ MongoidDeviseSkeleton::Application.routes.draw do
   resources :posts do
     resources :comments
     post :create_comment
+    #delete :destroy_comment
   end
 
   mount Resque::Server, :at => "/resque"

@@ -1,15 +1,14 @@
 
 <h1>All Nodes</h1>
 
-<table>
-
 <% @nodes.each do |node| %>
-  <tr>
-  <td><%= link_to node.title , node %>(<%= node.posts_count %>条帖子)</td>
-    <td><%= link_to 'Destroy', node, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
+  <h3>
+  <%= link_to node.title , node %>(<%= node.posts_count %>条帖子)</td>
+<% if current_user.admin? %>
+  <%= link_to 'Destroy', node, confirm: 'Are you sure?', method: :delete %>
 <% end %>
-</table>
+</h3>
+<% end %>
 
 
 

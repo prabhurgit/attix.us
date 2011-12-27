@@ -1,7 +1,7 @@
 <div class="content">
 	<div class="box">
       <div id="node_info">
-        <%= render 'posts/node_info', :node => @node %>
+        <%= render 'posts/node_info', :node => @node, :user => @user %>
       </div>
       <div class="topics">
         <% @posts.each do |post| %>
