@@ -1,0 +1,15 @@
+
+<h2>本站共有<%= @total_users_count %>名注册用户</h2>
+</br>
+<h3>活跃用户：</h3>
+<% @hot_users.each do |user| %><p>
+  <%= user_avatar_tag(user, :normal) %>
+  <%= link_to user.name, user_path(user) %>
+<%= user.email %>
+</p>
+<% if current_user.admin? %>
+  | <%= link_to "delete", user, :method => :delete, :confirm => "Sure?" %>
+<% end %>
+<% end %>
+
+<%= custom_will_paginate @hot_users %>

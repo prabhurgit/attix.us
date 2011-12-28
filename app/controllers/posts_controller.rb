@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+    @posts = Post.last_actived.includes(:node, :user, :last_comment_user).paginate :page => params[:page], :per_page => 30
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,6 +16,7 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
+    @comments = @post.comments.asc(:_id).all.paginate :page => params[:page], :per_page =>30
 
     respond_to do |format|
       format.html # show.html.erb
@@ -51,6 +52,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(params[:post])
+    @post.content = @post.raw_content
     @post.user_id = current_user.id
     @post.node_id = params[:node_id] || params[:post][:node_id]
 

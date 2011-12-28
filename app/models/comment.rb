@@ -32,5 +32,4 @@ class Comment
     self.content = markdown_with_syntax(self.raw_content)
   end
 
-
 end

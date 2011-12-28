@@ -1,14 +1,19 @@
 MongoidDeviseSkeleton::Application.routes.draw do
   root :to => "posts#index"
 
-  devise_for :users
+  devise_for :users ,:path => 'account'
+
+  resources :users
+
 
   resources :nodes
   resources :posts do
     resources :comments
     post :create_comment
+    #delete :destroy_comment
   end
 
+  mount Resque::Server, :at => "/resque"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -64,5 +69,5 @@ MongoidDeviseSkeleton::Application.routes.draw do
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
-  match ':controller(/:action(/:id(.:format)))'
+  # match ':controller(/:action(/:id(.:format)))'
 end

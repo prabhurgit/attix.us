@@ -1,1 +1,8 @@
-<p><%= raw comment.content %></p>
+<p><%= user_avatar_tag(comment.user, :normal) %>
+<%= comment.user.name %>:<%= raw comment.content %></p>
+
+<% user = comment.user rescue User.where(:user_id => comment.user_id) %>
+<% if current_user.admin? or current_user == user %>
+  <%= link_to "delete", post_comment_path(@post, comment), method: :delete,
+                                confirm: "You sure?" %>
+<% end %>

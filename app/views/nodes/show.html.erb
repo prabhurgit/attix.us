@@ -1,24 +1,7 @@
 <h1><%= @node.title %>'s posts</h1>
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Author</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<%= link_to 'New Post', new_post_path(:node_id => @node.id) %>
 
-<% @posts.each do |post| %>
-  <tr>
-    <td><%= post.title %> (<%= post.comments_count %>条回复)</td>
-    <td><%= post.user.email %></td>
-    <td><%= link_to 'Show', post %></td>
-    <td><%= link_to 'Edit', edit_post_path(post) %></td>
-    <td><%= link_to 'Destroy', post, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
+<%= render 'posts/posts' %>
 
 <br />
 
-<%= link_to 'New Post', new_post_path(:node_id => @node.id) %>

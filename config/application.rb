@@ -59,3 +59,6 @@ module MongoidDeviseSkeleton
   end
 
 end
+
+APP_CONFIG = YAML.load_file("#{Rails.root}/config/attix.yml")[Rails.env]
+

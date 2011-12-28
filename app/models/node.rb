@@ -11,7 +11,10 @@ class Node
   references_many :posts
 
   # Scope
-  default_scope :order => 'create at desc'
+  default_scope :order => 'create at'
+  scope :hot, desc(:comments_count, :posts_count)
+
+
 
   # Validation
   validates_presence_of :title

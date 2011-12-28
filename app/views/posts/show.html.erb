@@ -10,15 +10,10 @@
   <%= raw @post.content %>
 </p>
 
-<% if @post.comments.size > 0 %>
-  <h2>Comments</h2>
-  <% @post.comments.each do |comment| %>
-    <%= raw comment.content %> | by <%= comment.user.email %> <br />
-  <% end %>
-<% end %>
+<%= render 'comments' %>
 
 <h2>Add a comment:</h2>
-<%= form_for [@post, Comment.new] do |f| %>
+<%= form_for [@post, @post.comments.new], :remote => true do |f| %>
   <p>
     <%= f.text_area :raw_content, :rows => 3 %>
     <%= f.submit %>
