@@ -9,6 +9,28 @@
  *= require pygments
  */
 
+body {
+  background: url('bright_squares.png');
+}
+
+
 #main {
   margin-top: 60px;
+}
+
+form#user_new {
+  background: #fff;
+  padding: 10px;
+  padding-bottom: 0px;
+  border-radius: 5px;
+  width: 640px;
+  float: left;
+}
+
+div#sign_up {
+  float: right;
+  width: 220px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 5px;
 }
