@@ -1,26 +1,36 @@
+<div class="box">
+  <h2>All Nodes</h2>
 
-<h1>All Nodes</h1>
+  <ul id="node_list" class="unstyled">
+  <% @nodes.each do |node| %>
+    <li>
+    <%= link_to node.title , node %>  (<%= node.posts_count %> posts)</td>
+    <% if current_user.admin? %>
+      <%= link_to 'Destroy', node, confirm: 'Are you sure?', method: :delete %>
+    <% end %>
+    </li>
+  <% end %>
+  </ul>
 
-<% @nodes.each do |node| %>
-  <h3>
-  <%= link_to node.title , node %>(<%= node.posts_count %>条帖子)</td>
-<% if current_user.admin? %>
-  <%= link_to 'Destroy', node, confirm: 'Are you sure?', method: :delete %>
-<% end %>
-</h3>
-<% end %>
 
 
+  <h2>
+  </h2>
+  <%= form_for @node do |f| %>
+    <fieldset>
 
-<h2>
-  <p>Create a node here !</p>
-</h2>
-<%= form_for @node do |f| %>
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="actions">
-    <%= f.submit 'create'%>
-  </div>
-<% end %>
+      <legend> Create a node here !  </legend>
+      <div class="clearfix">
+        <%= f.label :title %>
+        <div class="input">
+          <%= f.text_field :title %>
+        </div>
+      </div>
+
+      <div class="actions">
+        <%= f.submit 'create', :class => "btn primary" %>
+      </div>
+
+    </fieldset>
+  <% end %>
+</div>
