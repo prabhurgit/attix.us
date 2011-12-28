@@ -13,7 +13,9 @@
 
   <div class="container">
     <div id="main" class="container-fluid">
-      <p class="alert"><%= alert %></p>
+      <% unless alert.nil? %>
+        <p class="alert-message"><%= alert %></p>
+      <% end %>
         <%= yield %>
     </div>
   </div>
