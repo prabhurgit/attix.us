@@ -1,10 +1,11 @@
 <div class="box" id="sign_up">
-  <h4>Don't have an account?</h4>
   <%- if controller_name != 'sessions' %>
+    <h4>Already have an account?</h4>
     <%= link_to "Sign in", new_session_path(resource_name) %><br />
   <% end -%>
 
   <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+    <h4>Don't have an account?</h4>
     <%= link_to "Sign up", new_registration_path(resource_name) %><br />
   <% end -%>
 
