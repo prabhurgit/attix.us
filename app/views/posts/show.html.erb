@@ -5,6 +5,13 @@
   <%= @post.title %>
 </p>
 
+<% user = @post.user rescue User.where(:user_id => @post.user_id) %>
+<% if current_user.admin? or current_user == user %>
+  <%= link_to 'Edit', edit_post_path %> |
+  <%= link_to 'Delete', post_path, method: :delete,
+                                confirm: "You sure?" %>
+<% end %>
+
 <p>
   <b>Content:</b>
   <%= raw @post.content %>
@@ -20,5 +27,4 @@
   </p>
 <% end %>
 
-<%= link_to 'Edit', edit_post_path %> |
 <%= link_to 'Back', posts_path %>
