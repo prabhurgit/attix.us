@@ -1,8 +1,15 @@
-<p><%= user_avatar_tag(comment.user, :normal) %>
-<%= comment.user.name %>:<%= raw comment.content %></p>
+<div class="comment">
+  <div class="avatar">
+    <%= user_avatar_tag(comment.user, :normal) %>
+  </div>
 
-<% user = comment.user rescue User.where(:user_id => comment.user_id) %>
-<% if current_user.admin? or current_user == user %>
-  <%= link_to "delete", post_comment_path(@post, comment), method: :delete,
-                                confirm: "You sure?" %>
-<% end %>
+  <div class="right_info">
+
+    <%= comment.user.name %>:<%= raw comment.content %>
+    <% user = comment.user rescue User.where(:user_id => comment.user_id) %>
+    <% if current_user.admin? or current_user == user %>
+    <%= link_to "delete", post_comment_path(@post, comment), method: :delete,
+      confirm: "You sure?" %>
+    <% end %>
+  </div>
+</div>

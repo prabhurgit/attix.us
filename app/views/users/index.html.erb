@@ -1,15 +1,23 @@
 
-<h2>本站共有<%= @total_users_count %>名注册用户</h2>
-</br>
-<h3>活跃用户：</h3>
-<% @hot_users.each do |user| %><p>
-  <%= user_avatar_tag(user, :normal) %>
-  <%= link_to user.name, user_path(user) %>
-<%= user.email %>
-</p>
-<% if current_user.admin? %>
-  | <%= link_to "delete", user, :method => :delete, :confirm => "Sure?" %>
-<% end %>
-<% end %>
+<div class="box">
+  <h2>本站共有<%= @total_users_count %>名注册用户</h2>
+  </br>
+  <h3>活跃用户：</h3>
+    <% @hot_users.each do |user| %>
+      <div class="topic">
+        <div class="avatar">
+          <%= user_avatar_tag(user, :normal) %>
+        </div>
+        <div class="right_info">
+          <%= link_to user.name, user_path(user) %>
+          <%= user.email %>
+        </div>
+        <% if current_user.admin? %>
+          | <%= link_to "delete", user, :method => :delete, :confirm => "Sure?" %>
+        <% end %>
+      </div>
+      <div class="clearfix"></div>
+    <% end %>
 
-<%= custom_will_paginate @hot_users %>
+  <%= custom_will_paginate @hot_users %>
+</div>

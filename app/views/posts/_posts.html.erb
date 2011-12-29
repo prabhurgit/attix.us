@@ -1,11 +1,12 @@
 <div class="content">
-	<div class="box posts">
-      <div id="node_info">
-        <%= render 'posts/node_info', :node => @node, :user => @user %>
-      </div>
-      <div class="topics">
-        <% @posts.each do |post| %>
-          <div class="topic topic_line">
+  <div class="box posts">
+    <div id="node_info">
+      <%= render 'posts/node_info', :node => @node, :user => @user %>
+    </div>
+    <div class="topics">
+      <% @posts.each do |post| %>
+        <div class="topic topic_line">
+          <div class="avatar">
             <%= user_avatar_tag(post.user, :normal) %>
           </div>
           <div class="right_info">
@@ -19,16 +20,17 @@
               </div>
               <div class="info time">
                 <% if post.last_comment_user.blank? %>
-                  创建于<%= post.created_at %>
+                  创建于<%= post.created_at.to_s(:db) %>
                 <% else %>
                   由 <%= user_name_tag(post.last_comment_user) %>
-                   最后评论于<%= post.created_at %>
+                  最后评论于<%= post.created_at.to_s(:db) %>
                 <% end %>
               </div>
             </div>
           </div>
-        <% end %>
-      </div>
-      <%= custom_will_paginate @posts %>
-	</div>
+        </div>
+      <% end %>
+    </div>
+    <%= custom_will_paginate @posts %>
+  </div>
 </div>

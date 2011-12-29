@@ -1,5 +1,6 @@
-<h1><%= @node.title %>'s posts</h1>
-<%= link_to 'New Post', new_post_path(:node_id => @node.id) %>
+<div class="box sidebar">
+  <%= link_to 'New Post', new_post_path(:node_id => @node.id), :class => "btn primary" %>
+</div>
 
 <%= render 'posts/posts' %>
 
