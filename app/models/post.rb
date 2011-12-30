@@ -3,6 +3,7 @@ class Post
   include Mongoid::Timestamps
   include Mongoid::CounterCache
   include MarkdownWithSyntax
+  include Sunspot::Mongoid
 
   key :title
 
@@ -34,6 +35,11 @@ class Post
   index :last_comment_at
   index :user_id
 
+  # Sunspot Full-Text Search
+ searchable do
+    text :title
+    text :content
+  end
 
 
   # Scopes

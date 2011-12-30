@@ -28,6 +28,11 @@ gem 'rmmseg-cpp-huacnlee', '0.2.9'
 gem 'redis-namespace','~> 1.0.3'
 gem 'redis-search', '0.6.3'
 
+# solr search
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+gem 'sunspot_mongoid'
+
 # bootstrap
 gem 'twitter-bootstrap-rails'
 
@@ -60,10 +65,10 @@ gem 'jquery-rails'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 # Test
-gem 'rspec-rails', :group => [:development, :test]
-gem 'database_cleaner', :group => :test
-gem 'factory_girl_rails', :group => :test
-gem 'mongoid-rspec', :group => :test
+#gem 'rspec-rails', :group => [:development, :test]
+#gem 'database_cleaner', :group => :test
+#gem 'factory_girl_rails', :group => :test
+#gem 'mongoid-rspec', :group => :test
 gem 'faker', :group => [:development, :test]
 #gem 'ffaker', :group => [:development, :test]
 
