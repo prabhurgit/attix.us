@@ -20,9 +20,9 @@
     </div>
   </div>
 
-  <% if Rails.env.development? %>
-    <%= debug(params) %>
-  <% end %>
+  <% if Rails.env.development?%>
+   <% debug(params)%>
+  <% end%>
 
   <%= render :partial => 'layouts/footer' %>
 

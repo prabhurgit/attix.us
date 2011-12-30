@@ -1,5 +1,6 @@
 class Node
   include Mongoid::Document
+  include Redis::Search
 
   key :title
 
@@ -14,6 +15,10 @@ class Node
   default_scope :order => 'create at'
   scope :hot, desc(:comments_count, :posts_count)
 
+  # Redis Search
+  redis_search_index(:title_field => :title,
+                     :score_field => :title,
+                     :ext_field => :posts_count)
 
 
   # Validation

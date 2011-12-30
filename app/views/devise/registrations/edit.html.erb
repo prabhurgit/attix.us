@@ -4,6 +4,7 @@
 
   <div class="avatar">
     <%= user_avatar_tag(@user, :large) %><br>
+    <%= user_name_tag(@user) %>
     <a href="http://gravatar.com/emails">更换头像？</a>
   </div>
 
@@ -41,7 +42,7 @@
     </div>
 
     <div class="clearfix">
-      <%= f.label :current_password %> 
+      <%= f.label :current_password %>
       <div class="input">
         <%= f.password_field :current_password %>
         <br />

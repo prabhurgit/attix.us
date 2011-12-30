@@ -2,7 +2,14 @@
 <div class="box">
   <h2>本站共有<%= @total_users_count %>名注册用户</h2>
   </br>
-  <h3>活跃用户：</h3>
+ <p>
+    <%= form_tag users_path, :method => 'get' do %>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "搜索用户", :name => "" %>
+    <% end %>
+  </p>
+
+
     <% @hot_users.each do |user| %>
       <div class="topic">
         <div class="avatar">

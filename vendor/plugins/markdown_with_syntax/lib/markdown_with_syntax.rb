@@ -4,7 +4,7 @@ module MarkdownWithSyntax
   end
 
   def markdown(text)
-    defaults = [:hard_wrap, :autolink, :no_intraemphasis, 
+    defaults = [:hard_wrap, :autolink, :no_intraemphasis,
                 :fenced_code, :gh_blockcode]
     Redcarpet.new(text, *defaults).to_html
   end

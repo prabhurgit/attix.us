@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :authenticate_user!
 
   def show
     @user = User.find(params[:id])
@@ -6,8 +7,15 @@ class UsersController < ApplicationController
   end
 
   def index
+    if params[:search]
+      result = Redis::Search.query("User", params[:search])
+      ids = result.collect { |r| r["id"] }
+      @hot_users = User.find(ids).paginate(:page => params[:page], :per_page => 50)
+    else
+      @hot_users = User.hot.paginate :page => params[:page], :per_page => 30
+    end
     @total_users_count = User.count
-    @hot_users = User.hot.paginate :page => params[:page], :per_page => 30
+
   end
 
   def destroy

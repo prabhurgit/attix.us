@@ -12,24 +12,26 @@
     <%= link_to 'Edit', edit_post_path %> |
     <%= link_to 'Delete', post_path, method: :delete,
     confirm: "You sure?" %>
-  <% end %>
+<% end %>
 
-  <article>
-    <%= raw @post.content %>
-  </article>
 
-  <%= render 'comments' %>
+<article>
+  <%= raw @post.content %>
+</article>
 
-  <h4 class="new_comment_title">Add new comment</h4>
+<%= render 'common/share' %>
+<br /><br /><br /><%= render 'comments' %>
 
-  <%= form_for [@post, @post.comments.new], :remote => true do |f| %>
-    <fieldset>
-      <div class="clearfix">
-        <%= f.text_area :raw_content, :rows => 3, :class => "span8" %>
-      </div>
-      <%= f.submit :class => "btn primary" %>
-    </fieldset>
-  <% end %>
+<h4 class="new_comment_title">Add new comment</h4>
 
-  <%= link_to 'Back', posts_path %>
+<%= form_for [@post, @post.comments.new], :remote => true do |f| %>
+  <fieldset>
+    <div class="clearfix">
+      <%= f.text_area :raw_content, :rows => 3, :class => "span8" %>
+    </div>
+    <%= f.submit :class => "btn primary" %>
+  </fieldset>
+<% end %>
+
+<%= link_to 'Back', posts_path %>
 </div>

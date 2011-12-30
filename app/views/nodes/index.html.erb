@@ -1,5 +1,11 @@
 <div class="box">
   <h2>All Nodes</h2>
+  <p>
+    <%= form_tag nodes_path, :method => 'get' do %>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "搜索节点", :title => "" %>
+    <% end %>
+  </p>
 
   <ul id="node_list" class="unstyled">
   <% @nodes.each do |node| %>
@@ -11,6 +17,7 @@
     </li>
   <% end %>
   </ul>
+  <%= custom_will_paginate @nodes %>
 
 
 

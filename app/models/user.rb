@@ -1,6 +1,9 @@
 # coding: utf-8
 class User
   include Mongoid::Document
+  include Redis::Search
+
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -13,13 +16,21 @@ class User
   field :posts_count, :type => Integer, :default => 0
   field :comments_count, :type => Integer, :default => 0
 
-  validates :name, :length => {:in => 3..20}, :presence => true, :uniqueness => {:case_sensitive => true}
+  validates :name, :length => {:in => 3..20}, :presence => true #, :uniqueness => {:case_sensitive => true}
 
   scope :hot, desc(:comments_count, :posts_count)
 
   # References
   has_many :posts
   has_many :comments
+
+
+  # Redis Search
+  redis_search_index(:title_field => :name,
+                     :score_field => :posts_count,
+                     :ext_field => :email)
+
+
 
   def admin?
     APP_CONFIG['admin_emails'].include? self.email

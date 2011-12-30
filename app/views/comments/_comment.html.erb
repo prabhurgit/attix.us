@@ -5,7 +5,7 @@
 
   <div class="right_info">
 
-    <%= comment.user.name %>:<%= raw comment.content %>
+    <%= user_name_tag(comment.user) %>:<%= raw comment.content %>
     <% user = comment.user rescue User.where(:user_id => comment.user_id) %>
     <% if current_user.admin? or current_user == user %>
     <%= link_to "delete", post_comment_path(@post, comment), method: :delete,

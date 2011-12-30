@@ -2,8 +2,16 @@ class NodesController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @nodes = Node.all
+    if params[:search]
+      result = Redis::Search.query("Node", params[:search])
+      ids = result.collect { |r| r["id"] }
+      @nodes = Node.find(ids).paginate(:page => params[:page], :per_page => 50)
+    else
+      @nodes = Node.all.paginate(:page => params[:page], :per_page => 50)
+
+    end
     @node = Node.new
+
   end
 
   def show
