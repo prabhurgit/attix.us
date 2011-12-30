@@ -1,0 +1,28 @@
+<div class="topic topic_line">
+          <div class="avatar">
+            <%= user_avatar_tag(post.user, :normal) %>
+          </div>
+          <div class="right_info">
+            <div class="infos">
+              <div class="title">
+                <%= link_to(highlight(post.title, @keywords), post_path(post), :title => post.title) %>
+              </div>
+              <div class="info leader">
+                由<%= user_name_tag(post.user) %>
+                在 <%= render_node_name(post.node_id) %> 节点创建
+              </div>
+              <div class="info time">
+                <% if post.last_comment_user.blank? %>
+                  创建于<%= post.created_at.to_s(:db) %>
+                <% else %>
+                  由 <%= user_name_tag(post.last_comment_user) %>
+                  最后评论于<%= post.created_at.to_s(:db) %>
+                <% end %>
+              </div>
+              <div class="summary">
+                <%= highlight(truncate(post.content, :length => 500), @keywords) %>
+              </div>
+            </div>
+          </div>
+        </div>
+

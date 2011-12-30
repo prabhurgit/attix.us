@@ -1,5 +1,6 @@
 MongoidDeviseSkeleton::Application.routes.draw do
   root :to => "posts#index"
+  match '/search' => "Search#index", :as => :search
 
   devise_for :users ,:path => 'account'
 

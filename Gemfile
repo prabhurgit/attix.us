@@ -31,7 +31,6 @@ gem 'redis-search', '0.6.3'
 # solr search
 gem 'sunspot_rails'
 gem 'sunspot_solr'
-gem 'sunspot_mongoid'
 
 # bootstrap
 gem 'twitter-bootstrap-rails'

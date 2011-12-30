@@ -36,9 +36,13 @@ class Post
   index :user_id
 
   # Sunspot Full-Text Search
- searchable do
-    text :title
-    text :content
+  searchable do
+    text :title, :stored => true
+    text :content, :stored => true
+    text :comments, :stored => true do
+      comments.map{ |comment| comment.content }
+    end
+    time :last_comment_at
   end
 
 
