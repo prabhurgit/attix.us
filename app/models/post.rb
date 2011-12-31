@@ -42,6 +42,12 @@ class Post
     text :comments, :stored => true do
       comments.map{ |comment| comment.content }
     end
+    text :node_id, :stored => true do
+      Node.find(node_id).title
+    end
+    text :user_id, :stored => true do
+      User.find(user_id).name
+    end
     time :last_comment_at
   end
 

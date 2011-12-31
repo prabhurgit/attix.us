@@ -2,12 +2,13 @@
   <div class="box posts">
     <div class="topics">
       <% unless @search.results.blank? %>
+        <h3>搜索结果：</h3>
         <% @search.each_hit_with_result do |hit, result| %>
           <%= render "post", :post => result, :hit => hit %>
         <% end %>
       <% else %>
         <div class="topic">
-          啥也没找着吖
+          <h3>啥也没找着吖</h3>
         </div>
       <% end %>
     </div>

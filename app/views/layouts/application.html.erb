@@ -21,10 +21,13 @@
   </div>
 
   <% if Rails.env.development?%>
-   <% debug(params)%>
+   <%= debug(params)%>
   <% end%>
 
-  <%= render :partial => 'layouts/footer' %>
+  <% if Rails.env.production? %>
+    <%= render :partial =>  'common/google_analytics' %>
+  <% end %>
 
+  <%= render :partial => 'layouts/footer' %>
 </body>
 </html>
