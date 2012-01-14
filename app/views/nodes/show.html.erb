@@ -1,8 +1,8 @@
 <div class="box sidebar">
   <%= link_to 'New Post', new_post_path(:node_id => @node.id), :class => "btn primary" %>
+<%= render 'nodes/users' %>
+
 </div>
-
 <%= render 'posts/posts' %>
-
 <br />
 

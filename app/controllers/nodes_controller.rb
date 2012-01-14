@@ -1,3 +1,4 @@
+# coding: utf-8
 class NodesController < ApplicationController
   before_filter :authenticate_user!
 
@@ -8,7 +9,6 @@ class NodesController < ApplicationController
       @nodes = Node.find(ids).paginate(:page => params[:page], :per_page => 50)
     else
       @nodes = Node.all.paginate(:page => params[:page], :per_page => 50)
-
     end
     @node = Node.new
 
@@ -18,6 +18,7 @@ class NodesController < ApplicationController
     @node = Node.find(params[:id])
     #@posts = @node.posts.last_actived
     @posts = @node.posts.last_actived.includes(:node, :user, :last_comment_user).paginate :page => params[:page], :per_page => 30
+    @users = User.where(:id.in => @node.follower_ids).limit(20)
   end
 
   def create
@@ -25,7 +26,7 @@ class NodesController < ApplicationController
 
     respond_to do |format|
       if @node.save
-        format.html { redirect_to nodes_path, notice: 'Post was successfully created.' }
+        format.html { redirect_to nodes_path, notice: 'Node was successfully created.' }
         format.json { render json: @node, status: :created, location: @node }
       else
         format.html { render action: "new" }

@@ -3,7 +3,7 @@
   <p>
     <%= form_tag nodes_path, :method => 'get' do %>
       <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "搜索节点", :title => "" %>
+      <%= submit_tag "搜索节点", :title => "", :class => "btn" %>
     <% end %>
   </p>
 
@@ -12,7 +12,7 @@
     <li>
     <%= link_to node.title , node %>  (<%= node.posts_count %> posts)</td>
     <% if current_user.admin? %>
-      <%= link_to 'Destroy', node, confirm: 'Are you sure?', method: :delete %>
+      <%= link_to 'Destroy', node, confirm: 'Are you sure?', method: :delete, :class => "btn" %>
     <% end %>
     </li>
   <% end %>
@@ -22,7 +22,7 @@
 
 
   <h2>
-  </h2>
+ </h2>
   <%= form_for @node do |f| %>
     <fieldset>
 

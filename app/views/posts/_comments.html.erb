@@ -1,9 +1,21 @@
 <% if @comments.size > 0 %>
-    <%= custom_will_paginate @comments %>
+  <%= custom_will_paginate @comments %>
+  <% if post.user_id == current_user.id or current_user.admin? %>
+    <h3>Comments</h3>
+    <div id=comments>
+      <%= render @comments %>
+    </div>
+  <% else %>
+    <h3>只有发布者能够看到回复</h3>
+    <div class="comments">
+      <% @comments.each do |comment| %>
+        <% if comment.user_id == current_user.id %>
+          <%= render comment %>
+        <% end %>
+      <% end %>
+    </div>
 
-  <h3>Comments</h3>
-  <div id=comments>
-    <%= render @comments %>
-  </div>
+  <% end %>
+
   <%= custom_will_paginate @comments %>
 <% end %>

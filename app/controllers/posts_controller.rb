@@ -1,5 +1,16 @@
+# coding: utf-8
 class PostsController < ApplicationController
+
   before_filter :authenticate_user!
+
+  def following
+    @posts = Post.following(current_user.id).paginate :page => params[:page], :per_page => 30
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @posts }
+    end
+  end
 
   # GET /posts
   # GET /posts.json
@@ -55,6 +66,10 @@ class PostsController < ApplicationController
     @post.content = @post.raw_content
     @post.user_id = current_user.id
     @post.node_id = params[:node_id] || params[:post][:node_id]
+    #if @post.save
+    #  Resque.enqueue(MarkdownHighlighter, @post.id)
+    #end
+
 
     respond_to do |format|
       if @post.save

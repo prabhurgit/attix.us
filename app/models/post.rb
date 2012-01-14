@@ -1,3 +1,5 @@
+# coding: utf-8
+
 class Post
   include Mongoid::Document
   include Mongoid::Timestamps
@@ -55,6 +57,11 @@ class Post
   # Scopes
   scope :last_actived, desc('last_comment_at').desc('created_at')
 
+  def following(user_id)
+    user = User.find(user_id)
+    Post.where(:node_id.in => user.node_id).desc('last_comment_at').desc('created_at')
+  end
+
   def last_comment_user_email
     user = User.find(:last_comment_user_id)
     user.email
@@ -67,7 +74,8 @@ class Post
 
   before_save :update_content
   def update_content
-    self.content = markdown_with_syntax(self.raw_content)
+   #Resque.enqueue(MarkdownHighlighter, self.id)
+   self.content = markdown_with_syntax(self.raw_content)
   end
 
   before_save :set_last_comment_at

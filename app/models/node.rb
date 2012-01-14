@@ -1,3 +1,5 @@
+# coding: utf-8
+
 class Node
   include Mongoid::Document
   include Redis::Search
@@ -10,6 +12,8 @@ class Node
 
   # References
   references_many :posts
+
+  field :follower_ids, :type => Array, :default => []
 
   # Scope
   default_scope :order => 'create at'
@@ -24,4 +28,18 @@ class Node
   # Validation
   validates_presence_of :title
   validates_uniqueness_of :title
+
+  def push_follower(user_id)
+    user = User.find(user_id)
+    self.follower_ids << user.id if !self.follower_ids.include?(user.id)
+    user.node_ids << self.id if !user.node_ids.include?(self.id)
+    user.save! and self.save!
+  end
+
+  def pull_follower(user_id)
+    self.follower_ids.delete(user_id)
+    user = User.find(user_id)
+    user.node_ids.delete(self.id)
+  end
+
 end

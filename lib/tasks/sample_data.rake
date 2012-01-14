@@ -1,10 +1,11 @@
+# coding: UTF-8
 namespace :db do
   desc 'Fill database with sample data'
   task :populate => :environment do
-    #Rake::Task['db:drop'].invoke
-    #make_users
-    #make_nodes
-    #make_posts
+    Rake::Task['db:drop'].invoke
+    make_users
+    make_nodes
+    make_posts
     make_comments
   end
 
@@ -12,6 +13,7 @@ namespace :db do
   def make_users
     User.create!(:email => 'parano@qq.com',
                  :name => 'parano',
+                 :signature => 'hello world',
                  :password => 'password',
                  :password_confirmation => 'password')
 
@@ -22,6 +24,7 @@ namespace :db do
       password = "password"
       User.create!(:email => email,
                    :name => name,
+                   :signature => Faker::Lorem.sentence(5),
                    :password => password,
                    :password_confirmation => password )
     end
@@ -29,8 +32,8 @@ namespace :db do
 
   def make_nodes
     puts 'nodes'
-    ['Ruby','Python','NoSQL','MySQL','SoftwareEngineering',
-     'Java','C++','Database','NodeJS','Matlab'].each do |item|
+    ['Ruby','Python',"NoSQL Database","Software Testing","Software Engineering",
+     "Android Development","iOS Development","MySQL Database",'NodeJS','Ruby on Rails'].each do |item|
       Node.create!(:title => item)
      end
   end

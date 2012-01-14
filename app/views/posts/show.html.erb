@@ -9,9 +9,9 @@
 
   <% user = @post.user rescue User.where(:user_id => @post.user_id) %>
   <% if current_user.admin? or current_user == user %>
-    <%= link_to 'Edit', edit_post_path %> |
+    <%= link_to 'Edit', edit_post_path, :class => "btn primary" %>
     <%= link_to 'Delete', post_path, method: :delete,
-    confirm: "You sure?" %>
+    confirm: "You sure?", :class => "btn danger" %>
 <% end %>
 
 
@@ -20,9 +20,14 @@
 </article>
 
 <%= render 'common/share' %>
-<br /><br /><br /><%= render 'comments' %>
+
+<br /><br /><br />
+
+<%= render 'comments',:post => @post %>
+
 
 <h4 class="new_comment_title">Add new comment</h4>
+
 
 <%= form_for [@post, @post.comments.new], :remote => true do |f| %>
   <fieldset>

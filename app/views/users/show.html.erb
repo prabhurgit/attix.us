@@ -1,7 +1,12 @@
 <div class="box user_profile">
 <%= user_avatar_tag(@user, :large) %>
 <h3><%= user_name_tag(@user) %></h3>
-  <%= @user.email %>
+<%= @user.email %><br />
+<hr>
+<%= @user.signature %><br />
+<% if @user == current_user %>
+  It's You! <%= link_to "Edit!", root_url + "account/edit" %>
+<% end %>
 </div>
 
 <div class="right_panel">
