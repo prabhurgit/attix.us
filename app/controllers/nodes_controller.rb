@@ -29,7 +29,7 @@ class NodesController < ApplicationController
         format.html { redirect_to nodes_path, notice: 'Node was successfully created.' }
         format.json { render json: @node, status: :created, location: @node }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to nodes_path, notice: 'Node already exist'  }
         format.json { render json: @node.errors, status: :unprocessable_entity }
       end
     end
