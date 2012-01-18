@@ -1,5 +1,5 @@
 production:
-  secret_token: # 'rake secret' to make a new token
+  secret_token: 'e1eb14d5555bb057d77c77c0b07d02bdf8076a3a1fb10cbc15b426b5553871c3a696fb0ec028a991d7c478820734f5096a9a5f056009a70236ccbdaa2a17df5f' # 'rake secret' to make a new token
   site_name: Campo
   host:
   google_custom_search_id:
